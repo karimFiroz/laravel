@@ -28,10 +28,12 @@
 
 
 <center>
-        <a href="{{url('/')}}">Home</a>|
-        <a href="{{route('users')}}">All users</a>|
-        <a href="{{route('posts')}}">All posts</a>|
-        <a href="{{route('create')}}">Add User</a>|
+        <a href="{{route('set-session')}}">Set-Session</a>|
+        <a href="{{route('get-session')}}">Get-Session</a>|
+        <a href="{{route('forget-session')}}">Forget-Session</a>|
+        <a href="{{route('get-session')}}">Get-Session</a>|
+        <a href="{{route('delete-session')}}">Delete-Session</a>|
+        <a href="{{route('get-session')}}">Get-Session</a>|
      
 </center>
 

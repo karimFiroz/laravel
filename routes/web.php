@@ -12,11 +12,17 @@ use App\Http\Controllers\GroupController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\TestSessionController;
+/*---------------------------------------------*/
+Route::get('/', function() {return view('welcome'); });
 /*
 |------------------------
 |Route::middleware('test')->group(function() {  });
 |-------------------------------*/
-Route::get('/', function() {return view('welcome');});
+Route::get('set-session', [TestSessionController::class, 'set'])->name('set-session');
+Route::get('get-session', [TestSessionController::class, 'getData'])->name('get-session');
+Route::get('delete-session', [TestSessionController::class, 'destroy'])->name('delete-session');
+Route::get('forget-session', [TestSessionController::class, 'forget'])->name('forget-session');
 
 
 
