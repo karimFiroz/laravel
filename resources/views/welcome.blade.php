@@ -34,6 +34,9 @@
         <a href="{{route('get-session')}}">Get-Session</a>|
         <a href="{{route('delete-session')}}">Delete-Session</a>|
         <a href="{{route('get-session')}}">Get-Session</a>|
+        <a href="{{route('all-session')}}">All-Session</a>|
+        <a href="{{route('flash-message')}}">Temporary message set</a>|
+        <a href="{{route('show-message')}}">View temporary message</a>
      
 </center>
 

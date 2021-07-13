@@ -23,6 +23,13 @@ Route::get('set-session', [TestSessionController::class, 'set'])->name('set-sess
 Route::get('get-session', [TestSessionController::class, 'getData'])->name('get-session');
 Route::get('delete-session', [TestSessionController::class, 'destroy'])->name('delete-session');
 Route::get('forget-session', [TestSessionController::class, 'forget'])->name('forget-session');
+Route::get('all-session', [TestSessionController::class, 'index'])->name('all-session');
+Route::get('check-session', [TestSessionController::class, 'check'])->name('check-session');
+
+
+Route::get('flash-message', [TestSessionController::class, 'flash'])->name('flash-message');
+Route::get('show-message', [TestSessionController::class, 'showMessage'])->name('show-message');
+
 
 
 
