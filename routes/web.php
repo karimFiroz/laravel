@@ -14,7 +14,7 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\TestSessionController;
 /*---------------------------------------------*/
-Route::get('/', function() {return view('welcome'); });
+Route::get('/', function() {return view('home'); });
 /*
 |------------------------
 |Route::middleware('test')->group(function() {  });
