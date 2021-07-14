@@ -54,7 +54,9 @@
                                             
                                             <td>
                                <a href="#" class="btn btn-info btn-sm">Edit</a>
-                               <a href="#" class="btn btn-danger btn-sm">Delete</a>
+         <form class="form-inline"onclick="return confirm('Are you sure delete? ')" action="{{route('user_delete',$user->id)}}" method="post">
+        {{ csrf_field() }}
+        <input type="submit" class="btn btn-danger btn-sm" value="Delete"/></form>
                                             	
                                             </td>
                                         </tr>

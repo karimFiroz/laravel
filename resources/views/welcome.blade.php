@@ -5,18 +5,7 @@
 <div class="row">
     <div class="col-md-3">
 
-        <a href="{{route('set-session')}}">Set-Session</a><br /><br />
-        <a href="{{route('get-session')}}">Get-Session</a><br /><br />
-        <a href="{{route('forget-session')}}">Forget-Session</a><br /><br />
-        <a href="{{route('check-session')}}">Check-Session</a><br /><br />
-        <a href="{{route('delete-session')}}">Delete-Session</a><br /><br />
-        <a href="{{route('all-session')}}">All-Session[If no found session first click Set-Session]</a><br /><br />
-        <a href="{{route('flash-message')}}">Temporary message set</a><br /><br />
-        <a href="{{route('show-message')}}">View temporary message</a>
-    
-
-        
-  
+     
               
  Tutorials
             

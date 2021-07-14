@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 use DB;
 use Illuminate\Http\Request;
 use App\Models\User;
-class UserController extends Controller{
+class UserController extends Controller
+{
 
 
 /****************
@@ -84,10 +85,20 @@ return $request->all();
 |users delete
 |function---delete
 *****************/
-   public function delete($id)
+     
+    public function delete($id)
     {
        
+            $user=User::find($id);
+    
+            $user->delete($id);
+           return redirect()->route('users');
     }
+
+
+
+
+
 
        public function show($id, $email = 'mamun@gmail.com')
     {

@@ -28,6 +28,10 @@ Route::get('/', function() {return view('welcome'); });
 
 
 Route::get('register', [RegisterController::class, 'index'])->name('signup');
+Route::post('register_store', [RegisterController::class, 'store'])->name('store');
+
+
+
 Route::get('login', [LoginController::class, 'index'])->name('signin');
 
 
@@ -45,6 +49,7 @@ Route::get('show-message', [TestSessionController::class, 'showMessage'])->name(
 Route::get('users', [UserController::class, 'index'])->name('users');
 Route::get('users/create', [UserController::class, 'create'])->name('create');
 Route::post('users', [UserController::class, 'store']);
+Route::post('users_delete/{id}', [UserController::class, 'delete'])->name('user_delete');
 
 Route::get('posts',  [PostController::class, 'index'])->name('posts');
 

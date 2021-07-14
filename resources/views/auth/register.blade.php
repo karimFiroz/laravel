@@ -46,13 +46,24 @@
 
 
 
-                            <form class="user">
+                  <form class="user"action="{{url('register_store')}}"method="post">
                             	@csrf
 
+    @if($errors->any())
+
+    <div class="alert alert-danger">
+      <ul>
+        @foreach($errors->all() as $error)
+        <p>{{$error}}</p>
+        @endforeach
+      </ul>
+    </div>
+    
+@endif 
                             	Name:
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="text" name="name"class="form-control form-control-user" id="exampleName"
+                                        <input type="text" name="name"value="{{old('name')}}"class="form-control form-control-user" id="exampleName"
                                             placeholder="Name">
                                     </div>
                                    
@@ -62,7 +73,7 @@
 
                                 Email:
                                 <div class="form-group">
-                                    <input type="email"name="email" class="form-control form-control-user" id="exampleInputEmail"
+                                    <input type="email"name="email" value="{{old('email')}}"class="form-control form-control-user" id="exampleInputEmail"
                                         placeholder="Email Address">
                                 </div>
 

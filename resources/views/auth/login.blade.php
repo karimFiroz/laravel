@@ -54,7 +54,7 @@
 
                                     <form class="user">
 
-
+                                    	@csrf
 
                                     	Email:
                                         <div class="form-group">

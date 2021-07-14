@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\cr;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class RegisterController extends Controller
 {
@@ -19,76 +21,26 @@ class RegisterController extends Controller
     }
 
 
-
-
-
-
-
-
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+  public function store(Request $request)
     {
-        //
+       $data=$request->validate([
+'name'=>'required|string|min:3',
+'email'=>'required|email|unique:users',
+//'password'=>'required|min:6'
+        ]);
+$data['password']=Hash::make($request->get('password'));
+  if(User::create($data)){
+        return redirect()->route('signin');
+    }else{
+         return redirect()->route('signup');
+    }
+return $request->all();
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+ 
+  
+ }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\cr  $cr
-     * @return \Illuminate\Http\Response
-     */
-    public function show(cr $cr)
-    {
-        //
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\cr  $cr
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(cr $cr)
-    {
-        //
-    }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\cr  $cr
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, cr $cr)
-    {
-        //
-    }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\cr  $cr
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(cr $cr)
-    {
-        //
-    }
-}
