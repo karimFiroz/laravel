@@ -112,15 +112,44 @@
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Login Screens:</h6>
-                        
-                        <a class="collapse-item" href="{{route('create')}}">User Registration</a>
-                        
 
 
-                        <a class="collapse-item" href="{{route('users')}}">All Users</a>
+
+
+
+
+
+
+
+
+
+ <a class="collapse-item" href="{{route('signup')}}">Sign UP</a>
+                        
+                    
+<a class="collapse-item" href="{{route('signin')}}">Login</a>
+
+
+<a class="collapse-item" href="{{route('users')}}">All Users</a>
 
                         
-                        <a class="collapse-item" href="{{route('posts')}}">All Posts</a>
+<a class="collapse-item" href="{{route('posts')}}">All Posts</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
                         <a class="collapse-item" href="{{asset('public/frontend')}}/login.html">Login</a>

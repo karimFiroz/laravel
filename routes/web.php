@@ -13,12 +13,25 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\TestSessionController;
-/*---------------------------------------------*/
-Route::get('/', function() {return view('home'); });
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\LoginController;
+
+
 /*
 |------------------------
 |Route::middleware('test')->group(function() {  });
 |-------------------------------*/
+Route::get('/', function() {return view('welcome'); });
+
+
+
+
+
+Route::get('register', [RegisterController::class, 'index'])->name('signup');
+Route::get('login', [LoginController::class, 'index'])->name('signin');
+
+
+
 Route::get('set-session', [TestSessionController::class, 'set'])->name('set-session');
 Route::get('get-session', [TestSessionController::class, 'getData'])->name('get-session');
 Route::get('delete-session', [TestSessionController::class, 'destroy'])->name('delete-session');
@@ -26,23 +39,14 @@ Route::get('forget-session', [TestSessionController::class, 'forget'])->name('fo
 Route::get('all-session', [TestSessionController::class, 'index'])->name('all-session');
 Route::get('check-session', [TestSessionController::class, 'check'])->name('check-session');
 
-
 Route::get('flash-message', [TestSessionController::class, 'flash'])->name('flash-message');
 Route::get('show-message', [TestSessionController::class, 'showMessage'])->name('show-message');
-
-
-
 
 Route::get('users', [UserController::class, 'index'])->name('users');
 Route::get('users/create', [UserController::class, 'create'])->name('create');
 Route::post('users', [UserController::class, 'store']);
 
-
-
-
-
 Route::get('posts',  [PostController::class, 'index'])->name('posts');
-
 
 /*--------------------------------------------
 Route::get('sync', function() {
