@@ -34,32 +34,51 @@ class UserController extends Controller
 |function-----store
 ********************/
   
- public function store(Request $request){
-
-$data=$request->validate([
-'name'=>'required|string|min:3',
-'email'=>'required|email|unique:users',
+    public function store(Request $request)
+    {
+        //Check validation
+        $this->validate($request,[
+'name'=>'required|string|max:15',
 'password'=>'required|min:6'
+
         ]);
 
-  if(User::create($data)){
+        $user=new User;
+        $user->admin_id=$request->admin_id;
+        $user->group_id=$request->group_id;
+        $user->group=$request->group;
+        $user->name=$request->name;
+        $user->email=$request->email;
+        $user->password=$request->password;
+        $user->phone=$request->phone;
+        $user->address=$request->address;
+        $user->save();
         return redirect()->route('users');
-    }else{
-         return redirect()->route('create');
-    }
-return $request->all();
     }
 
-  
 
-/********************
-|route('users_update')
-|user update
-|function-----update
-*******************/
+    public function edit($id)
+    {
+       $users= User::find($id);
+
+   return view('user.edit')->with('user',$users);
+    }
+
+
     public function update(Request $request, $id)
     {
-       
+        $user=User::find($id);
+        
+         $user->admin_id=$request->admin_id;
+        $user->group_id=$request->group_id;
+        $user->group=$request->group;
+        $user->name=$request->name;
+        $user->email=$request->email;
+        $user->password=$request->password;
+        $user->phone=$request->phone;
+        $user->address=$request->address;
+       $user->save();
+       return redirect()->route('users');
     }
 /*************************
 |route('users_update_name')
@@ -69,15 +88,6 @@ return $request->all();
    public function updateName(Request $request,$id)
     {
     
-    }
-/********************
-|route('users_edit')
-|users edit
-|function---edit
-*******************/
-    public function edit($id)
-    {
-       
     }
 
 /**********************

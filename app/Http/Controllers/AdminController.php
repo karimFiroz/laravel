@@ -1,14 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
-use DB;
+namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\Controller;
+use App\Models\Admin;
 use Illuminate\Http\Request;
-use App\models\User;
-
-class LoginController extends Controller
+use DB;
+class AdminController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,31 +14,30 @@ class LoginController extends Controller
      */
     public function index()
     {
-        return view('auth.login');
+        return view('admin.login');
     }
 
 
-      public function login( Request $request )
+
+
+ public function adminLoginCheck(Request $request)
     {
-       $email=$request->email;
-       $password=$request->password;
-       $result=DB::table('users')
-       ->where('email',$email)
-       ->where('password',md5($password))
-       ->first();
+        $email=$request->email;
+        $$password=$request->password;
 
- if(!$result){
-    return Redirect::to('/');
- }else{
-     return Redirect::to('login');
- }
+        $result=DB::table('admins')
+        ->where('email', $email)
+        ->where('password', md5($password))
+        ->first();
+
+        if($result){
+         return redirect()->route('backend-dashboard');
+    }else{
+         return Redirect::to('/');
     }
 
-
- 
-
-
-
+        return view('admin.dashboard');
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -66,10 +62,10 @@ class LoginController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\cr  $cr
+     * @param  \App\Models\Admin  $admin
      * @return \Illuminate\Http\Response
      */
-    public function show(cr $cr)
+    public function show(Admin $admin)
     {
         //
     }
@@ -77,10 +73,10 @@ class LoginController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\cr  $cr
+     * @param  \App\Models\Admin  $admin
      * @return \Illuminate\Http\Response
      */
-    public function edit(cr $cr)
+    public function edit(Admin $admin)
     {
         //
     }
@@ -89,10 +85,10 @@ class LoginController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\cr  $cr
+     * @param  \App\Models\Admin  $admin
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, cr $cr)
+    public function update(Request $request, Admin $admin)
     {
         //
     }
@@ -100,10 +96,10 @@ class LoginController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\cr  $cr
+     * @param  \App\Models\Admin  $admin
      * @return \Illuminate\Http\Response
      */
-    public function destroy(cr $cr)
+    public function destroy(Admin $admin)
     {
         //
     }

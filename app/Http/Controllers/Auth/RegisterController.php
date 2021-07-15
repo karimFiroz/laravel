@@ -28,7 +28,8 @@ class RegisterController extends Controller
 'email'=>'required|email|unique:users',
 //'password'=>'required|min:6'
         ]);
-$data['password']=Hash::make($request->get('password'));
+//$data['password']=Hash::make($request->get('password'));
+$data['password']=md5($request->get('password'));
   if(User::create($data)){
         return redirect()->route('signin');
     }else{

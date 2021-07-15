@@ -21,19 +21,29 @@
                                     <tr>
                                             <th>SN</th>
                                             <th>id</th>
+                                            <th>admin_id</th>
+                                            <th>group_id</th>
+                                            <th>group</th>
                                             <th>name</th>
                                             <th>email</th>
                                             <th>password</th>
+                                            <th>phone</th>
+                                            <th>address</th>
                                             <th>action</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>SN</th>
+                                           <th>SN</th>
                                             <th>id</th>
+                                            <th>admin_id</th>
+                                            <th>group_id</th>
+                                            <th>group</th>
                                             <th>name</th>
                                             <th>email</th>
                                             <th>password</th>
+                                            <th>phone</th>
+                                            <th>address</th>
                                             <th>action</th>
                                         </tr>
                                     </tfoot>
@@ -47,13 +57,17 @@
                                     	@endphp
                                         <tr>
                                             <td>{{$i}}</td>
-                                            <td>{{$user->id}}</td>
-                                            <td>{{$user->name}}</td>
-                                            <td>{{$user->email}}</td>
-                                            <td>{{$user->password}}</td>
-                                            
-                                            <td>
-                               <a href="#" class="btn btn-info btn-sm">Edit</a>
+                                        <td>{{$user->id}}</td>
+                                        <td>{{$user->admin_id}}</td>
+                                        <td>{{$user->group_id}}</td>
+                                        <td>{{$user->group}}</td>
+                                        <td>{{$user->name}}</td>
+                                        <td>{{$user->email}}</td>
+                                        <td>{{$user->password}}</td>
+                                        <td>{{$user->phone}}</td>
+                                        <td>{{$user->address}}</td>
+                                        <td>
+                               <a href="{{route('user_edit', $user->id)}}" class="btn btn-success btn-sm">Edit</a>
          <form class="form-inline"onclick="return confirm('Are you sure delete? ')" action="{{route('user_delete',$user->id)}}" method="post">
         {{ csrf_field() }}
         <input type="submit" class="btn btn-danger btn-sm" value="Delete"/></form>

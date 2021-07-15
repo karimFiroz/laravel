@@ -13,6 +13,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\TestSessionController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 
@@ -23,18 +24,23 @@ use App\Http\Controllers\Auth\LoginController;
 |-------------------------------*/
 Route::get('/', function() {return view('welcome'); });
 
+Route::get('/admin', function() {
+  return 'Welcome to admin'; });
 
 
+//admin auth
 
+Route::get('admin-login', [AdminController::class, 'index'])->name('admin-login');
+Route::post('admin-login_check', [AdminController::class, 'adminLoginCheck'])->name('backend-dashboard');
+//Users Auth
 
 Route::get('register', [RegisterController::class, 'index'])->name('signup');
 Route::post('register_store', [RegisterController::class, 'store'])->name('store');
 
+Route::get('user-login', [LoginController::class, 'index'])->name('signin');
+Route::post('user-login', [LoginController::class, 'login'])->name('login');
 
-
-Route::get('login', [LoginController::class, 'index'])->name('signin');
-
-
+//Session
 
 Route::get('set-session', [TestSessionController::class, 'set'])->name('set-session');
 Route::get('get-session', [TestSessionController::class, 'getData'])->name('get-session');
@@ -46,10 +52,21 @@ Route::get('check-session', [TestSessionController::class, 'check'])->name('chec
 Route::get('flash-message', [TestSessionController::class, 'flash'])->name('flash-message');
 Route::get('show-message', [TestSessionController::class, 'showMessage'])->name('show-message');
 
-Route::get('users', [UserController::class, 'index'])->name('users');
-Route::get('users/create', [UserController::class, 'create'])->name('create');
-Route::post('users', [UserController::class, 'store']);
-Route::post('users_delete/{id}', [UserController::class, 'delete'])->name('user_delete');
+//users
+
+
+
+
+
+Route::get('/users', [UserController::class, 'index'])->name('users');
+Route::get('/add_user', [UserController::class, 'addUser'])->name('addUser');
+Route::get('/create', [UserController::class, 'create'])->name('user_create');
+Route::post('/users_store', [UserController::class, 'store'])->name('store');
+Route::get('/edit/{id}', [UserController::class, 'edit'])->name('user_edit');
+Route::post('/update/{id}', [UserController::class, 'update'])->name('user_update');
+Route::post('/delete/{id}', [UserController::class, 'delete'])->name('user_delete');
+
+//posts
 
 Route::get('posts',  [PostController::class, 'index'])->name('posts');
 
